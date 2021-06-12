@@ -13,7 +13,9 @@ class CategoryMealsScreen extends StatelessWidget {
         title: Text(categoryTitle),
       ),
       body: Center(
-        child: Text('Recepti za kategoriju $categoryTitle'),
+        child: ListView.builder(itemCount: ,itemBuilder: (context, index) {
+                  
+                },)),
       ),
     );
   }
