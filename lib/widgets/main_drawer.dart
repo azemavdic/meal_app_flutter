@@ -27,14 +27,15 @@ class MainDrawer extends StatelessWidget {
             title: 'Jela',
             icon: Icons.restaurant,
             onTap: () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           buildDrawerList(
             title: 'Filter',
             icon: Icons.settings,
             onTap: () {
-              Navigator.of(context).pushNamed(FiltersScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(FiltersScreen.routeName);
             },
           ),
         ],
