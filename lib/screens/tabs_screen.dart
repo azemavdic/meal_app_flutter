@@ -9,32 +9,41 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  final List<Map<String, Object>> _pages = [
+    {'page': CategoriesScreen(), 'title': 'Kategorije'},
+    {'page': FavoritesScreen(), 'title': 'Favoriti'},
+  ];
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Početna'),
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                icon: Icon(Icons.category),
-                text: 'Kategorije',
-              ),
-              Tab(
-                icon: Icon(Icons.favorite),
-                text: 'Favoriti',
-              ),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_pages[index]['title']),
+      ),
+      body: _pages[index]['page'],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Theme.of(context).accentColor,
+        currentIndex: index,
+        onTap: (int i) {
+          setState(() {
+            index = i;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            label: 'Kategorije',
+            icon: Icon(Icons.category),
           ),
-        ),
-        body: TabBarView(
-          children: [
-            CategoriesScreen(),
-            FavoritesScreen(),
-          ],
-        ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            label: 'Favoriti',
+            icon: Icon(Icons.favorite),
+          ),
+        ],
       ),
     );
   }
